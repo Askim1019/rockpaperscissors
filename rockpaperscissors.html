@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Events!</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+  </head>
+  <body>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <div class="jumbotron">
+            <p id="user-input"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- We have to put this at the end of our document to ensure the user-text
+         span exists when we try to access it. -->
+    <script type="text/javascript">
+
+    var wins = 0;
+    var losses = 0;
+    var ties = 0;
+
+    document.onkeyup = function(event) {
+
+        var choices = ["r", "p", "s"];
+        var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+        var userChoice = event.key;
+
+        if (userChoice === 'r' && computerChoice ==='p') {
+          losses += 1;
+        }
+        else if (userChoice === 'r' && computerChoice === 's') {
+          wins += 1;
+        }
+        else if (userChoice === 's' && computerChoice === 'p') {
+          wins += 1;
+        } 
+        else if (userChoice === 's' && computerChoice === 'r') {
+          losses += 1;
+        }
+        else if (userChoice === 'p' && computerChoice === 's') {
+          losses += 1;
+        }
+        else if (userChoice === 'p' && computerChoice === 'r') {
+          wins += 1;
+        }
+        else {
+          ties += 1;
+        }
+
+        
+        var html = "<p>You Chose: " + userChoice + "</p>" + "<p>Wins: " + wins + "</p>" + "<p>Losses: " + losses + "</p>"
+        + "<p>Ties: " + ties + "</p>";
+        document.getElementById("user-input").innerHTML = html;
+      };  
+
+      
+    </script>
+  </body>
+</html>
